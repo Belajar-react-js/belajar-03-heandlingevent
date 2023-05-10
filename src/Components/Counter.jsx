@@ -1,11 +1,26 @@
 import { Button } from "react-bootstrap";
+import { useState } from "react";
 
 function Counter() {
+  //state
+  const [count, setCount] = useState(0);
+
+  const decrement = () => {
+    if (count > 0) {
+      setCount(count - 1);
+    }
+  };
+  const increment = () => {
+    setCount(count + 1);
+  };
+
   return (
     <>
-      <Button>-</Button>
-      <span>0</span>
-      <Button>+</Button>
+      <Button onClick={decrement} disabled={count == 0 && true}>
+        -
+      </Button>
+      <span className="mx-3">{count}</span>
+      <Button onClick={increment}>+</Button>
     </>
   );
 }
